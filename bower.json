@@ -1,0 +1,46 @@
+{
+  "name": "ng-alt",
+  "version": "0.0.1",
+  "authors": [
+    "Artem I. <2urnix@gmail.com>"
+  ],
+  "description": "AngularJS directive that generate accurate SVG with alternative text instead image with corrupt ng-src attribute.",
+  "dependencies": {
+    "angular": "~1.4.5",
+    "holderjs": "^2.9.3"
+  },
+  "main": "src/ngAlt.js",
+  "keywords": [
+    "angular",
+    "angular.js",
+    "angularjs",
+    "ng",
+    "holder",
+    "holder.js",
+    "holderjs",
+    "ng-alt",
+    "ngalt",
+    "alt",
+    "alternative",
+    "placeholder",
+    "replace",
+    "instead",
+    "svg",
+    "image",
+    "ng-src",
+    "src"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/urnix/ng-alt.git"
+  },
+  "homepage": "https://github.com/urnix/ng-alt",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
