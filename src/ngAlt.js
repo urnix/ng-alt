@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('app.global')
+  angular.module('ngAlt')
     .directive('ngAlt', [
       function () {
         return {
