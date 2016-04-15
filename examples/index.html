@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html data-ng-app="exampleApp" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script type="text/javascript" src="../bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="../bower_components/holderjs/holder.min.js"></script>
+  <script type="text/javascript" src="../src/ngAlt.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+
+  <style>
+    img{
+      max-height: 200px;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+<div data-ng-controller="exampleCtrl as vm">
+  <select name="" id="" title data-ng-model="vm.srcModel">
+    <option value="https://en.wikipedia.org/static/images/project-logos/enwiki.png" selected>1x</option>
+    <option value="https://en.wikipedia.org/static/images/project-logos/enwiki-2x.png">2x</option>
+    <option value="invalidUrl">Invalid url</option>
+    <option value="">Empty</option>
+  </select>
+  <hr>
+  <span data-ng-bind="'Model: (' + vm.srcModel + ')'"></span>
+  <hr>
+  <img ng-src="{{vm.srcModel}}" alt="alt text" ng-alt="ng alt text">
+</div>
+</body>
+</html>
