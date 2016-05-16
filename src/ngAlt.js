@@ -14,20 +14,19 @@
           element.bind('error', function () {
             applyHolder(element, attrs);
           });
-          attrs.$observe('ngSrc', function (newValue) {
-            if (!newValue) {
+          attrs.$observe('ngSrc', function (newValue, oldValue) {
+            if (!attrs.ngAlt && newValue !== oldValue) {
               applyHolder(element, attrs);
-            } else {
-              var image = element[0];
-              image.style.height = '';
-              image.style.width = '';
+            }
+          });
+          attrs.$observe('ngAltSize', function (newValue, oldValue) {
+            if (!attrs.ngAlt && newValue !== oldValue) {
+              applyHolder(element, attrs);
             }
           });
         }
 
         function applyHolder (element, attrs) {
-          // console.log('catch!');
-
           //noinspection JSUnresolvedVariable
           var text = attrs.ngAlt;
           //noinspection JSUnresolvedVariable
@@ -37,8 +36,8 @@
           var image = element[0];
           Holder.run({images: image});
           Holder.setResizeUpdate(image, false);
-          image.style.height = '';
           image.style.width = '';
+          image.style.height = '';
         }
       }]);
 })();
