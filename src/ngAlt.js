@@ -15,12 +15,19 @@
             applyHolder(element, attrs);
           });
           attrs.$observe('ngSrc', function (newValue, oldValue) {
-            if (!attrs.ngAlt && newValue !== oldValue) {
-              applyHolder(element, attrs);
+            if (newValue !== oldValue) {
+              if (attrs.ngSrc) {
+                var image = element[0];
+                image.style.width = '';
+                image.style.height = '';
+                image.style.display = '';
+              } else {
+                applyHolder(image, attrs);
+              }
             }
           });
           attrs.$observe('ngAltSize', function (newValue, oldValue) {
-            if (!attrs.ngAlt && newValue !== oldValue) {
+            if (!attrs.ngSrc && newValue !== oldValue) {
               applyHolder(element, attrs);
             }
           });
@@ -36,8 +43,6 @@
           var image = element[0];
           Holder.run({images: image});
           Holder.setResizeUpdate(image, false);
-          image.style.width = '';
-          image.style.height = '';
         }
       }]);
 })();
