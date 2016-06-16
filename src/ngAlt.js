@@ -8,22 +8,24 @@
           link: link
         };
 
-        //noinspection JSUnusedLocalSymbols
         function link (scope, element, attrs) {
-
           element.bind('error', function () {
+            attrs.loading = false;
             applyHolder(element, attrs);
+          });
+          element.bind('load', function () {
+            attrs.loading = false;
+            var image = element[0];
+            image.style.width = '';
+            image.style.height = '';
+            image.style.display = '';
           });
           attrs.$observe('ngSrc', function (newValue, oldValue) {
             if (newValue !== oldValue) {
-              if (attrs.ngSrc) {
-                var image = element[0];
-                image.style.width = '';
-                image.style.height = '';
-                image.style.display = '';
-              } else {
-                applyHolder(image, attrs);
+              if (newValue) {
+                attrs.loading = true;
               }
+              applyHolder(element, attrs);
             }
           });
           attrs.$observe('ngAltSize', function (newValue, oldValue) {
@@ -34,12 +36,9 @@
         }
 
         function applyHolder (element, attrs) {
-          //noinspection JSUnresolvedVariable
-          var text = attrs.ngAlt;
-          //noinspection JSUnresolvedVariable
+          var text = attrs.loading ? 'Image loading...' : attrs.ngAlt;
           var size = attrs.ngAltSize ? attrs.ngAltSize : '100px500';
           attrs.$set('data-src', 'holder.js/' + size + '?text=' + text);
-          //noinspection JSUnresolvedVariable
           var image = element[0];
           Holder.run({images: image});
           Holder.setResizeUpdate(image, false);
