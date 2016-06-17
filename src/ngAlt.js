@@ -40,7 +40,7 @@
           var size = attrs.ngAltSize ? attrs.ngAltSize : '100px500';
           attrs.$set('data-src', 'holder.js/' + size + '?text=' + text);
           var image = element[0];
-          Holder.run({images: image});
+          Holder.run({images: image, renderer: 'canvas'});
           Holder.setResizeUpdate(image, false);
         }
       }]);
